@@ -1,0 +1,45 @@
+# OS / editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Data — never commit raw datasets; document sources in README.md
+/data/
+!/data/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Node / Vue / Nuxt
+node_modules/
+.nuxt/
+.output/
+.vite/
+coverage/
+
+# Rust
+target/
+
+# Private workspace (Obsidian vault) — never committed
+/Doc
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+.claude/

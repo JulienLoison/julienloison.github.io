@@ -1,0 +1,54 @@
+# CI — runs `make` targets for every stack present in the repository.
+# Each block is skipped when its manifest file is absent.
+# Action versions: let Dependabot (.github/dependabot.yml) keep them current.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Python (pyproject.toml) -------------------------------------------
+      - name: Set up Python
+        if: hashFiles('pyproject.toml') != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Python — install uv and dependencies
+        if: hashFiles('pyproject.toml') != ''
+        run: |
+          pip install uv
+          uv sync
+      - name: Python — lint and test
+        if: hashFiles('pyproject.toml') != ''
+        run: make lint-python test-python
+
+      # --- Vue / TypeScript (web/package.json) --------------------------------
+      - name: Set up Node
+        if: hashFiles('web/package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Vue — install dependencies
+        if: hashFiles('web/package.json') != ''
+        run: npm ci --prefix web
+      - name: Vue — lint and test
+        if: hashFiles('web/package.json') != ''
+        run: make lint-vue test-vue
+
+      # --- Rust (Cargo.toml) ---------------------------------------------------
+      - name: Set up Rust
+        if: hashFiles('Cargo.toml') != ''
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - name: Rust — lint and test
+        if: hashFiles('Cargo.toml') != ''
+        run: make lint-rust test-rust
