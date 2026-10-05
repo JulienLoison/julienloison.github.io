@@ -1,6 +1,6 @@
 # Site Perso
 
-> One-line pitch (filled after PERSO-001).
+> One-line pitch.
 
 **Stack**: vue
 

@@ -37,7 +37,7 @@ coverage/
 # Rust
 target/
 
-# Private workspace (Obsidian vault) — never committed
+# Private workspace (Obsidian vault) and local agent files — never committed
 /Doc
 CLAUDE.md
 CLAUDE.local.md
