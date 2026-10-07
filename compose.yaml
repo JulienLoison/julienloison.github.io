@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: .docker
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - ./web:/app
+    command: ["npm", "run", "dev"]
+    environment:
+      NUXT_TELEMETRY_DISABLED: 1
