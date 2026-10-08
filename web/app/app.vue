@@ -1,6 +1,16 @@
+<script setup lang="ts">
+  useHead({
+    link: [
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
+    ]
+  })
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <UApp>
+    <div>
+      <NuxtRouteAnnouncer />
+      <NuxtPage />
+    </div>
+  </UApp>
 </template>
