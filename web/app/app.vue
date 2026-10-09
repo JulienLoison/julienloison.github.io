@@ -8,9 +8,15 @@
 
 <template>
   <UApp>
-    <div>
       <NuxtRouteAnnouncer />
-      <NuxtPage />
-    </div>
+      <NuxtLoadingIndicator />
+
+      <AppHeader />
+
+      <UMain>
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </UMain>
   </UApp>
 </template>
