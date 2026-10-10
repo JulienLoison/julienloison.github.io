@@ -1,10 +1,9 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <UHeader>
     <template #title>
-      <AppLogo class="w-auto h-6 shrink-0" />
+      <AppLogo class="h-6 w-auto shrink-0" />
     </template>
 
     <template #right>

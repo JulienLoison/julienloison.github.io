@@ -1,20 +1,18 @@
 <script setup lang="ts">
-  useHead({
-    link: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
-    ]
-  })
+useHead({
+  link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+})
 </script>
 
 <template>
   <UApp>
-      <NuxtRouteAnnouncer />
-      <NuxtLoadingIndicator />
+    <NuxtRouteAnnouncer />
+    <NuxtLoadingIndicator />
 
-      <AppHeader />
+    <AppHeader />
 
-      <UMain>
-        <NuxtPage />
-      </UMain>
+    <UMain>
+      <NuxtPage />
+    </UMain>
   </UApp>
 </template>
