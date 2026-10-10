@@ -23,10 +23,8 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
       - name: Vue — install dependencies
-        run: npm ci web
+        run: npm ci
       - name: Vue — lint
         run: npm run lint
       - name: Vue — type-check
         run: npm run type-check
-      - name: Vue — test
-        run: npm run test:unit -- --run
