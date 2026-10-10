@@ -49,7 +49,10 @@
   --ui-text-inverted: var(--color-sepia-50);
   --ui-primary: var(--color-mutedbrown-800);
   --ui-text-highlighted: var(--color-brown-950);
-  --ui-secondary: var(--color-brown-800);
+  --ui-secondary: var(--color-mutedbrown-950);
+  --code-background: var(--color-zinc-200);
+  --code-foreground: var(--color-zinc-900);
+  --code-muted: var(--color-zinc-400);
 }
 
 .dark {
@@ -60,5 +63,14 @@
   --ui-text-inverted: var(--color-sepia-900);
   --ui-primary: var(--color-mutedbrown-300);
   --ui-text-highlighted: var(--color-brown-50);
-  --ui-secondary: var(--color-brown-300);
+  --ui-secondary: var(--color-mutedbrown-50);
+  --code-background: var(--color-zinc-900);
+  --code-foreground: var(--color-zinc-200);
+  --code-muted: var(--color-zinc-700);
+}
+
+@theme inline {
+  --color-code: var(--code-background);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-muted: var(--code-muted);
 }
