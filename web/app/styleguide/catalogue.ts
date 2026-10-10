@@ -1,4 +1,4 @@
-import type {SectionDescription, ExampleDescription} from "~/styleguide/types.ts";
+import type {ExampleDescription} from "~/styleguide/types.ts";
 
 export const SECTIONS = [
   { id: 'headings', title: 'Titres' },
