@@ -11,4 +11,13 @@ export default defineNuxtConfig({
       },
     },
   },
+  app: {
+    head: {
+      title: 'Julien Loison - Développeur web',
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      htmlAttrs: {
+        lang: 'fr',
+      },
+    },
+  },
 })

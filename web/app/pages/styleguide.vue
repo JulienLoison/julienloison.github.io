@@ -47,6 +47,8 @@ useSeoMeta({
         </UPageAside>
       </template>
 
+      <UPageHeader title="Styleguide" />
+
       <UPageBody>
         <section v-for="section in sections" :key="section.description.id">
           <h2

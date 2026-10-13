@@ -15,7 +15,10 @@ defineProps<Props>()
     <p class="text-sm text-muted">{{ example.description.usage }}</p>
 
     <div class="min-w-0 border border-default bg-default p-6">
-      <component :is="example.component" />
+      <component
+        :is="example.component"
+        :role="example.description.presentation ? 'presentation' : null"
+      />
     </div>
     <CodeBlock :code="example.snippet" :path="example.location.path" />
   </article>
