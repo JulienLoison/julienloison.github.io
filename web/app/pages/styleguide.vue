@@ -47,16 +47,18 @@ useSeoMeta({
         </UPageAside>
       </template>
 
+      <UPageHeader title="Styleguide" />
+
       <UPageBody>
         <section v-for="section in sections" :key="section.description.id">
           <h2
             :id="section.description.id"
-            class="mb-6 scroll-mt-24 text-center text-2xl font-bold text-highlighted"
+            class="mb-6 scroll-mt-24 text-2xl font-bold text-highlighted"
           >
             {{ section.description.title }}
           </h2>
 
-          <div class="space-y-10">
+          <div class="space-y-4">
             <StyleguideExample
               v-for="example of section.examples"
               :key="example.location.slug"

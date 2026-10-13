@@ -1,7 +1,6 @@
 <script setup lang="ts"></script>
 <template>
   <UPageHero
-    title="Ceci est un titre"
     headline="Coming soon"
     :links="[
       {
@@ -18,6 +17,8 @@
       },
     ]"
   >
+    <template #title> Ceci est un titre </template>
+
     <template #description>
       Ceci est un
       <TextLink to="https://fr.wikipedia.org/wiki/Lorem_ipsum"

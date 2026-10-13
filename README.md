@@ -3,14 +3,14 @@
 > Julien Loison's personal website: who I am, what I build, my CV and how to
 > reach me. Static, sober, written by hand with Nuxt.
 
-**Stack**: Nuxt 4 · Vue 3 · TypeScript · Nuxt Content · Docker (dev tooling) ·
-GitHub Pages
+**Stack**: Nuxt 4 · Vue 3 · TypeScript · Nuxt UI · Playwright · Docker (dev
+tooling) · GitHub Pages
 
 ## What it is
 
 A fully static site (no back-end, no database): pages are pre-rendered at build
-time and served by GitHub Pages. Content lives in the repository as Markdown
-and YAML.
+time and served by GitHub Pages. Content lives in the repository as typed
+TypeScript data.
 
 Live version: coming soon.
 
@@ -30,8 +30,9 @@ Everyday commands:
 
 ```sh
 make help                        # list every available target
-make check                       # lint + tests, what CI runs
+make check                       # lint, type check, then e2e tests (what CI runs)
 make generate-vue                # generate the static site into web/.output/public
+make e2e-vue                     # generate the site, then run the e2e and accessibility tests
 make sh                          # open a shell in the container
 make run CONTAINER=web CMD="npm install <package>"   # one-off command
 make node-check                  # check the container runs the Node version of .nvmrc
@@ -43,13 +44,36 @@ make node-check                  # check the container runs the Node version of 
 
 The dev server port can be changed with `APP_PORT` (default `3000`).
 
+## Tests
+
+End-to-end tests run with [Playwright](https://playwright.dev) against the
+generated static site, served from the root path as GitHub Pages serves it. For
+every page they check the HTTP status, the title, `lang="fr"`, a single main
+heading, and run an automated accessibility scan with
+[axe](https://github.com/dequelabs/axe-core). Each test runs in a desktop and a
+mobile viewport (Chromium).
+
+```sh
+make e2e-vue    # generate the site, then run the tests in the e2e container
+```
+
+- Tests run in a separate `e2e` service based on the official Playwright
+  image. Its tag must match the `@playwright/test` version in
+  `web/package.json` (pinned, no range): bump both together.
+- `make check` includes the e2e tests, so it regenerates the site first.
+- HTML report: open `web/playwright-report/index.html` in a browser. In CI it
+  is uploaded as an artifact when a test fails.
+- Automated checks catch only part of accessibility issues; they do not
+  replace a manual review.
+
 ## Project layout
 
 | Path | What |
 |---|---|
 | `web/` | the Nuxt application (`app/` pages and components, `public/` static files) |
 | `.docker/` | development image |
-| `compose.yaml` | development service, mounts `web/` into the container |
+| `web/tests/` | end-to-end and accessibility tests (Playwright) |
+| `compose.yaml` | `web` development service and `e2e` test service, both mount `web/` |
 | `mk/` | make targets, split by concern (variables, Docker, Node, Vue) |
 | `.nvmrc` | single source of the Node.js version |
 | `.github/` | CI and Dependabot |

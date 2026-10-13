@@ -11,6 +11,7 @@ export type SectionDescription = {
 export type ExampleDescription = {
   name: string
   usage: string
+  presentation?: boolean
 }
 
 export type ExampleLocation = {

@@ -11,3 +11,13 @@ services:
     command: ["npm", "run", "dev"]
     environment:
       NUXT_TELEMETRY_DISABLED: 1
+
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.64.0-noble
+    volumes:
+      - ./web:/app
+    ipc: host
+    init: true
+    working_dir: /app
+    profiles:
+      - e2e

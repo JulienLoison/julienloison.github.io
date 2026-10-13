@@ -26,12 +26,21 @@ export const EXAMPLE_DESCRIPTIONS: Record<string, ExampleDescription> = {
     name: 'Bouton secondaire',
     usage: 'Actions annexes',
   },
-  'headings/h1': { name: 'Titre de page', usage: 'Un seul par page' },
+  'headings/h1': {
+    name: 'Titre de page',
+    usage: 'Un seul par page',
+    presentation: true,
+  },
   'headings/h2': {
     name: 'Titre de section',
     usage: 'Découpe une page en sections',
+    presentation: true,
   },
-  'headings/h3': { name: 'Sous-titre', usage: 'Découpe une section' },
+  'headings/h3': {
+    name: 'Sous-titre',
+    usage: 'Découpe une section',
+    presentation: true,
+  },
   'links/internal-link': {
     name: 'Lien interne',
     usage: 'Vers une page du site',
