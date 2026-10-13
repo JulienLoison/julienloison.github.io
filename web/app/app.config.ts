@@ -5,5 +5,10 @@ export default defineAppConfig({
       secondary: 'brown',
       neutral: 'sepia',
     },
+    pageHero: {
+      slots: {
+        title: 'text-4xl font-bold text-highlighted',
+      },
+    },
   },
 })
